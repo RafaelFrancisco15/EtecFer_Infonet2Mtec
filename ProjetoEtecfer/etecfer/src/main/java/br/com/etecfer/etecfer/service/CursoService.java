@@ -12,23 +12,23 @@ import br.com.etecfer.etecfer.repository.CursoRepository;
 public class CursoService {
     // Injeção de dependencias do repositorio  para a classe Curso 
     @Autowired
-   private CursoRepository CursoRepository;
+   private CursoRepository cursoRepository;
 
      //  Metodo para salvar um Curso
-   public Curso save(Curso Curso){
-      return (Curso) CursoRepository.findAll();
-    }
+   public Curso save(Curso curso){
+    return cursoRepository.save(curso);
+}
     // Metodo para listar todos os Cursos
-     public List<CursoRepository> findAll(){
-        return CursoRepository.findAll();
+     public List<Curso> findAll(){
+        return cursoRepository.findAll();
      }
 
      //metodo para excluir um Curso pelo id
      public void deleteById(Integer id){
-      CursoRepository.deleteById(id);
+      cursoRepository.deleteById(id);
      }
      // metodo para buscar o Curso pelo id
-     public CursoRepository findById(Integer id){
-     return CursoRepository.findById(id).orElse(null);
+     public Curso findById(Integer id){
+     return cursoRepository.findById(id).orElse(null);
      }
 }

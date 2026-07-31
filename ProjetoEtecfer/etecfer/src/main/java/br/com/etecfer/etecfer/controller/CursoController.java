@@ -22,18 +22,18 @@ public class CursoController {
     
     // Injeção de depenedentes da service para a classe Curso
     @Autowired
-    private CursoService CursoService;
+    private CursoService cursoService;
 
     // Metodo para salvar um Curso 
     @PostMapping("/salvar")
     public String salvar(@ModelAttribute Curso curso) {
-        CursoService.save(curso);
+        cursoService.save(curso);
         return "redirect:/Cursos/listar";
     }
      
     @GetMapping("/listar")
     public String listar(Model  model) {
-        List<CursoRepository>curso = CursoService.findAll();
+        List<Curso> cursos = cursoService.findAll();;
         model.addAttribute("Curso", curso);
         return "Curso/listarCursos";
     }
@@ -47,14 +47,14 @@ public class CursoController {
 
     @GetMapping("/excluir/{id}")
     public String excluir (@PathVariable("id") Integer id) {
-        CursoService.deleteById(id);
-        return "redirect:/Curso/listar";
+        cursoService.deleteById(id);
+        return "redirect:/Cursos/listar";
     }
 
     
-    @GetMapping("/editar{id}")
+    @GetMapping("/editar/{id}")
     public String editarForm(@PathVariable("id") Integer id, Model model) {
-        Curso curso = (Curso) CursoService.findById(id);
+        Curso curso = (Curso) cursoService.findById(id);
         model.addAttribute("Curso", curso);
         
         return "Curso/formularioCurso";
