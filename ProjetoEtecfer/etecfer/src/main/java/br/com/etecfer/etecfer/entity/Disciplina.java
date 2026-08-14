@@ -1,5 +1,5 @@
 package br.com.etecfer.etecfer.entity;
- 
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,36 +11,33 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
- 
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
 @Getter
-public class Aluno {
-    //Definição dos atributos da classe Aluno
+
+public class Disciplina {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer idAluno;
- 
+    private Integer idDisciplina;
+
     @Column(nullable = false,length = 40)
-    private String nomeAluno;
- 
-    @Column(length = 40)
-    private String emailAluno;
- 
-    @Column(nullable = false,length = 11)  
-    private String telefoneAluno;
- 
+    private String nomeDisciplina;
+
     @Column(nullable = false)
-    private Integer raAluno;
- 
-    @Column(nullable = false,length = 11)
-    private String cpfAluno;
- 
+    private String siglaDisciplina;
+
+    @Column(nullable = false)
+    private Integer chDisciplina;
+
     @ManyToOne
     @JoinColumn(name = "idCurso_fk")
     private Curso curso;
-   
+
+    @ManyToOne
+    @JoinColumn(name = "idProfessor_fk")
+    private Professor professor;
+
 }
- 

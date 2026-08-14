@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema EtecFer</title>
 </head>
 <body>
-     <h1 style="text-align: center;">Seja bem vindo(a) ao EtecFer</h1>
-     <a href="/alunos/listar">Gerenciar Alunos </a> <br>    
-     <a href="./curso/listarCursos.html">Gerenciar Cursos</a>
+    <h1 style="text-align: center;">Seja bem-vindo(a) ao EtecFer</h1>
+    <div style="text-align: center;">
+        <a th:href="@{/alunos/listar}">Gerenciar Alunos</a><br>
+        <a th:href="@{/cursos/listar}">Gerenciar Cursos</a><br>
+        <a th:href="@{/professores/listar}">Gerenciar Professores</a><br>
+        <a th:href="@{/disciplinas/listar}">Gerenciar Disciplinas</a><br>
+    </div>
 </body>
 </html>

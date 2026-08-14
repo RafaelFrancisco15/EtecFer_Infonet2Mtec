@@ -1,12 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Formulário de curso</title>
 </head>
 <body>
-    
+    <h1 style="text-align: center;">Cadastrar curso</h1>
+
+    <form th:action="@{/cursos/salvar}" method="post" th:object="${curso}">
+        <input type="hidden" th:field="*{idCurso}">
+
+        <label>Nome:</label>
+        <input type="text" th:field="*{nomeCurso}" required maxlength="40">
+        <br>
+
+        <label>Período:</label>
+        <input type="text" th:field="*{periodoCurso}" required>
+        <br>
+
+        <label>Carga horária:</label>
+        <input type="number" th:field="*{chCurso}" required min="1">
+        <br>
+
+        <input type="submit" value="Salvar">
+        <a th:href="@{/cursos/listar}">Voltar</a>
+    </form>
 </body>
 </html>

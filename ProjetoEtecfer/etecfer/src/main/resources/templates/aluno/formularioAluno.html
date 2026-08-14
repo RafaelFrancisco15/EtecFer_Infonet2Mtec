@@ -1,39 +1,45 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de aluno</title>
+    <title>Formulário de aluno</title>
 </head>
 <body>
-     <h1 style="text-align: center;"> Cadastrar aluno</h1>
+    <h1 style="text-align: center;">Cadastrar aluno</h1>
 
-      <form th:action="@{/alunos/salvar}" method="post" th:object="${aluno}">
+    <form th:action="@{/alunos/salvar}" method="post" th:object="${aluno}">
         <input type="hidden" th:field="*{idAluno}">
-        <label for="">Nome:</label>
-        <input type="text" th:field="*{nomeAluno}">
-        <br/>
 
-        <label for="">E-mail:</label>
-        <input type="text" th:field="*{emailAluno}">
-        <br/>
-        
-          <label for="">Telefone:</label>
-        <input type="text" th:field="*{emailAluno}">
-        <br/>
+        <label>Nome:</label>
+        <input type="text" th:field="*{nomeAluno}" required maxlength="40">
+        <br>
 
-          <label for="">RA:</label>
-        <input type="text" th:field="*{emailAluno}">
-        <br/>
+        <label>E-mail:</label>
+        <input type="email" th:field="*{emailAluno}" maxlength="40">
+        <br>
 
-          <label for="">CPF</label>
-        <input type="text" th:field="*{emailAluno}">
-        <br/>
-        <input type="submit" value="Salvar"/>
+        <label>Telefone:</label>
+        <input type="text" th:field="*{telefoneAluno}" required maxlength="11">
+        <br>
 
-      
+        <label>RA:</label>
+        <input type="number" th:field="*{raAluno}" required>
+        <br>
 
-      </form>
+        <label>CPF:</label>
+        <input type="text" th:field="*{cpfAluno}" required maxlength="11">
+        <br>
+
+        <label for="idCurso">Curso</label>
+    <select th:field="*{curso}"name="" id=""></select>
+        <option value="" disabled selected>Selecione o curso</option>
+        <option th:each="${nomeCurso}"></option>
+                
+    </select>
+
+        <input type="submit" value="Salvar">
+        <a th:href="@{/alunos/listar}">Voltar</a>
+    </form>
 </body>
 </html>

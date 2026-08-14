@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de disciplinas</title>
+</head>
+<body>
+    <h1 style="text-align: center;">Lista de disciplinas</h1>
+    <h3 style="text-align: center;">
+        <a th:href="@{/disciplinas/criar}">Nova disciplina</a>
+    </h3>
+
+    <table border="1" align="center">
+        <tr>
+            <th>Nome</th>
+            <th>Sigla</th>
+            <th>Carga horária</th>
+            <th>Ações</th>
+        </tr>
+        <tr th:each="disciplina : ${disciplinas}">
+            <td th:text="${disciplina.nomeDisciplina}">#</td>
+            <td th:text="${disciplina.siglaDisciplina}">#</td>
+            <td th:text="${disciplina.chDisciplina}">#</td>
+            <td>
+                <a th:href="@{/disciplinas/editar/{id}(id=${disciplina.idDisciplina})}">Editar</a>
+                <a th:href="@{/disciplinas/excluir/{id}(id=${disciplina.idDisciplina})}">Excluir</a>
+            </td>
+        </tr>
+    </table>
+
+    <p style="text-align: center;"><a th:href="@{/}">Página inicial</a></p>
+</body>
+</html>

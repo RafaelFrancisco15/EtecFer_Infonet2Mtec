@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de professor</title>
+</head>
+<body>
+    <h1 style="text-align: center;">Cadastrar professor</h1>
+
+    <form th:action="@{/professores/salvar}" method="post" th:object="${professor}">
+        <input type="hidden" th:field="*{idProfessor}">
+
+        <label>Nome:</label>
+        <input type="text" th:field="*{nomeProfessor}" required maxlength="40">
+        <br>
+
+        <label>Telefone:</label>
+        <input type="text" th:field="*{telProfessor}" required maxlength="15">
+        <br>
+
+        <label>CPF:</label>
+        <input type="text" th:field="*{cpfProfessor}" maxlength="11">
+        <br>
+
+        <label>Graduação:</label>
+        <input type="text" th:field="*{graduacaoProfessor}" required>
+        <br>
+
+        <input type="submit" value="Salvar">
+        <a th:href="@{/professores/listar}">Voltar</a>
+    </form>
+</body>
+</html>
