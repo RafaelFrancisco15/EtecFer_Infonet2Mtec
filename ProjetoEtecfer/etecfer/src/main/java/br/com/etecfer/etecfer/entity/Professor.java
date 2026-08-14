@@ -39,4 +39,10 @@ public class Professor {
     @OneToMany
     @JoinColumn(name = "idDisciplina_fk")
     private Disciplina diciplina;
+
+    @OneToMany
+    @JoinColumn(name = "idCurso_fk")
+    private Curso curso;
+
+
 }
