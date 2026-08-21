@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import br.com.etecfer.etecfer.entity.Aluno;
 import br.com.etecfer.etecfer.entity.Curso;
 import br.com.etecfer.etecfer.service.CursoService;
 
@@ -21,9 +20,6 @@ public class CursoController {
 
     @Autowired
     private CursoService cursoService;
-
-    @Autowired
-    private AlunoService alunoService;
 
     @PostMapping("/salvar")
     public String salvar(@ModelAttribute Curso curso) {
@@ -54,13 +50,6 @@ public class CursoController {
     public String editarForm(@PathVariable("id") Integer id, Model model) {
         Curso curso = cursoService.findById(id);
         model.addAttribute("curso", curso);
-
-        List<Aluno> alunos = alunoService.findAll();
-        model.addAttribute("aluno", alunos);
-
-
- 
- 
         return "curso/formularioCurso";
     }
 }

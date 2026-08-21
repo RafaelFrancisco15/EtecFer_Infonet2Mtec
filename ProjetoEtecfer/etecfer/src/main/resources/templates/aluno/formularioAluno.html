@@ -31,12 +31,15 @@
         <input type="text" th:field="*{cpfAluno}" required maxlength="11">
         <br>
 
-        <label for="idCurso">Curso</label>
-    <select th:field="*{curso}"name="" id=""></select>
-        <option value="" disabled selected>Selecione o curso</option>
-        <option th:each="${nomeCurso}"></option>
-                
-    </select>
+        <label for="curso">Curso:</label>
+        <select th:field="*{curso}" id="curso" required>
+            <option value="">Selecione um curso</option>
+            <option th:each="curso : ${cursos}"
+                    th:value="${curso.idCurso}"
+                    th:text="${curso.nomeCurso}">
+            </option>
+        </select>
+        <br>
 
         <input type="submit" value="Salvar">
         <a th:href="@{/alunos/listar}">Voltar</a>

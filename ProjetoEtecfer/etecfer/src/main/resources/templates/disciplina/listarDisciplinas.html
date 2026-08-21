@@ -16,12 +16,16 @@
             <th>Nome</th>
             <th>Sigla</th>
             <th>Carga horária</th>
+            <th>Curso</th>
+            <th>Professor</th>
             <th>Ações</th>
         </tr>
         <tr th:each="disciplina : ${disciplinas}">
             <td th:text="${disciplina.nomeDisciplina}">#</td>
             <td th:text="${disciplina.siglaDisciplina}">#</td>
-            <td th:text="${disciplina.chDisciplina}">#</td>
+            <td th:text="${disciplina.cargahDisciplina}">#</td>
+            <td th:text="${disciplina.curso.nomeCurso}">#</td>
+            <td th:text="${disciplina.professor.nomeProfessor}">#</td>
             <td>
                 <a th:href="@{/disciplinas/editar/{id}(id=${disciplina.idDisciplina})}">Editar</a>
                 <a th:href="@{/disciplinas/excluir/{id}(id=${disciplina.idDisciplina})}">Excluir</a>

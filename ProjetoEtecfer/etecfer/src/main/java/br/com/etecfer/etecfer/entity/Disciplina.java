@@ -30,7 +30,7 @@ public class Disciplina {
     private String siglaDisciplina;
 
     @Column(nullable = false)
-    private Integer chDisciplina;
+    private Integer cargahDisciplina;
 
     @ManyToOne
     @JoinColumn(name = "idCurso_fk")
