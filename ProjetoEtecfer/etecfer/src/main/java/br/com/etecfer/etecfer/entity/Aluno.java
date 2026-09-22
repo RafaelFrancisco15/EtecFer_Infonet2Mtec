@@ -1,17 +1,18 @@
 package br.com.etecfer.etecfer.entity;
- 
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
- 
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,25 +23,29 @@ public class Aluno {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer idAluno;
- 
+
     @Column(nullable = false,length = 40)
     private String nomeAluno;
- 
+
     @Column(length = 40)
     private String emailAluno;
- 
-    @Column(nullable = false,length = 11)  
+
+    @Column(nullable = false,length = 11)
     private String telefoneAluno;
- 
+
     @Column(nullable = false)
     private Integer raAluno;
- 
+
     @Column(nullable = false,length = 11)
     private String cpfAluno;
- 
+
     @ManyToOne
     @JoinColumn(name = "idCurso_fk")
     private Curso curso;
-   
+
+    @Lob
+    private byte[] fotoAluno;
+
+    @Column(length = 30)
+    private String tipoFoto;
 }
- 

@@ -8,7 +8,7 @@
 <body>
     <h1 style="text-align: center;">Cadastrar aluno</h1>
 
-    <form th:action="@{/alunos/salvar}" method="post" th:object="${aluno}">
+    <form th:action="@{/alunos/salvar}" method="post" th:object="${aluno}" enctype="multipart/form-data">
         <input type="hidden" th:field="*{idAluno}">
 
         <label>Nome:</label>
@@ -39,6 +39,10 @@
                     th:text="${curso.nomeCurso}">
             </option>
         </select>
+        <br>
+
+        <label for="foto">Foto:</label>
+        <input type="file" id="foto" name="foto" accept="image/*">
         <br>
 
         <input type="submit" value="Salvar">
